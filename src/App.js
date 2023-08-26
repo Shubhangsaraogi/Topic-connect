@@ -3,10 +3,9 @@ import io from "socket.io-client";
 import Chat from "./Chat";
 
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect(process.env.REACT_APP_BACKEND_URI);
 
 function App() {
-
   const [Username, setUsername] = useState("");
   const [Room, setRoom] = useState("");
   const [showChat, setShowChat] = useState(false)
