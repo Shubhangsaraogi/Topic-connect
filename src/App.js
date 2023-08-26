@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import io from "socket.io-client";
+import Chat from "./Chat";
+
+
+const socket = io.connect("http://localhost:5000");
 
 function App() {
+
+  const [Username, setUsername] = useState("");
+  const [Room, setRoom] = useState("");
+  const [showChat, setShowChat] = useState(false)
+  const joinRoom = () => {
+    if (Username !== "" && Room !== "") {
+      socket.emit("join_room", Room);
+      setShowChat(true);
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!showChat&&
+      <div className="card">
+          <div className="card-body">
+            <h5 className="card-title">Join Chat</h5>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label">Username</label>
+              <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="Type your Username" onChange={(event) => { setUsername(event.target.value) }}/>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlTextarea1" className="form-label">Room Id</label>
+              <input className="form-control" id="exampleFormControlTextarea1" rows="3"
+              onChange={(event) => { setRoom(event.target.value) }}
+              ></input>
+            </div>
+            <button href="#" onClick={joinRoom} className="join_button btn btn-primary">let's Chat</button>
+          </div>
+      </div>
+}
+ 
+      {showChat&&
+      <Chat Room={Room} Username={Username} socket={socket} />
+      }
     </div>
   );
 }
