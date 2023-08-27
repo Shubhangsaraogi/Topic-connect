@@ -1,4 +1,5 @@
 import { css } from '@emotion/css';
+import { getByPlaceholderText } from '@testing-library/react';
 import React, { useMemo, useState } from 'react'
 import ScrollToBottom from 'react-scroll-to-bottom';
 
@@ -28,6 +29,7 @@ const Chat = ({ socket, Username, Room }) => {
 
     const ROOT_CSS = css({
         height: 600,
+        
       });
     return (
         <>

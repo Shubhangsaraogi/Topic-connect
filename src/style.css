@@ -66,6 +66,9 @@ h2 {
 }
 .time{
     font-size: 0.7rem;
+	position: absolute;
+    left: 13%;
+	bottom: 2%;
 }
 .author{
     display: flex;
@@ -77,19 +80,27 @@ h2 {
 }
 
 .logo {
-	border-radius: 50%;
-	box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.7);
-	object-fit: cover;
-	position: absolute;
-	left: 10px;
-	top: -10px;
-	width: 50px;
-	height: 50px;
+	border-radius: inherit;
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.7);
+    object-fit: cover;
+    position: absolute;
+    left: 13%;
+    top: -10px;
+    /* width: 50px; */
+    color: black;
+    /* height: 50px; */
+    /* background: black; */
+    padding: 8px 5px 0px 5px;
+    font-size: 0.7rem;
 }
 
 .message.right .logo {
 	left: auto;
-	right: 10px;
+	right: 13%;
+}
+.message.right .time {
+	left: auto;
+	right: 13%;
 }
 
 .message p {
@@ -147,6 +158,21 @@ footer a {
 }
 .join_button{
     background: transparent;
+    color: white;
+    border: 2px solid;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+.faltu{
+	background: transparent;
+    color: transparent;
+    border: transparent;
+}
+.interest{
+	background: transparent;
     color: white;
     border: 2px solid;
 }
